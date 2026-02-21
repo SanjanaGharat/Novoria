@@ -1,0 +1,305 @@
+/* resources/css/style.css */
+/* ===== NOVORIA SIDEBAR STYLES ===== */
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Base sidebar link style */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: #2D2D2D;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.sidebar-link i {
+  width: 1.5rem;
+  color: #FF7A00;
+  font-size: 1.1rem;
+}
+
+.sidebar-link:hover {
+  background-color: #fff2e5;
+  color: #FF7A00;
+  transform: translateX(4px);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(90deg, rgba(255,122,0,0.1) 0%, rgba(255,122,0,0) 100%);
+  border-left: 3px solid #FF7A00;
+  font-weight: 600;
+}
+
+/* Dropdown button style */
+.sidebar-dropdown-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: #2D2D2D;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.sidebar-dropdown-btn:hover {
+  background-color: #fff2e5;
+  color: #FF7A00;
+}
+
+.sidebar-dropdown-btn i:first-child {
+  width: 1.5rem;
+  color: #FF7A00;
+}
+
+/* Submenu items */
+.sidebar-submenu {
+  list-style: none;
+}
+
+.sidebar-sub-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem 0.6rem 0.5rem;
+  border-radius: 0.75rem;
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  transition: all 0.15s;
+}
+
+.sidebar-sub-link i {
+  width: 1.2rem;
+  color: #FF7A00;
+  font-size: 0.9rem;
+}
+
+/* Special class for demo items WITHOUT icons */
+.sidebar-sub-link.no-icon {
+  padding-left: 2.2rem; /* indentation to align with other items that have icons */
+}
+
+.sidebar-sub-link:hover {
+  background-color: #fff2e5;
+  color: #FF7A00;
+  padding-left: 1rem;
+}
+
+.sidebar-sub-link.no-icon:hover {
+  padding-left: 2.2rem; /* keep alignment on hover */
+}
+
+/* Glass sidebar refinement */
+#mainSidebar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 10px 0 30px -10px rgba(0,0,0,0.1);
+}
+
+/* Overlay style */
+#sidebarOverlay {
+  transition: opacity 0.3s;
+}
+
+/* when sidebar open on mobile, prevent body scroll */
+body.sidebar-open {
+  overflow: hidden;
+}
+
+/* Large screen: sidebar always visible, overlay hidden */
+@media (min-width: 1024px) {
+  #mainSidebar {
+    transform: translateX(0) !important;
+  }
+  #sidebarOverlay {
+    display: none !important;
+  }
+  body.sidebar-open {
+    overflow: auto;
+  }
+}
+
+/* Ensure no residual transforms on desktop */
+@media (max-width: 1023px) {
+  #mainSidebar {
+    transition: transform 0.3s ease;
+  }
+}
+
+
+/* ===== WHY ME SECTION STYLES ===== */
+
+/* Main content area adjustment for sidebar */
+.lg\:ml-72 {
+  margin-left: 18rem; /* 72 * 0.25rem = 18rem */
+}
+
+/* Ensure content doesn't get cut off */
+.max-w-7xl {
+  max-width: 80rem;
+  width: 100%;
+}
+
+/* Smooth animations for the section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.why-me-section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Gradient text animation */
+.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Card hover effects */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+/* Decorative underline animation */
+svg path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: drawLine 2s ease forwards;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Responsive adjustments for sidebar */
+@media (min-width: 1024px) {
+  .lg\:ml-72 .max-w-7xl {
+    max-width: calc(80rem - 2rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .lg\:ml-72 {
+    margin-left: 0;
+  }
+}
+
+/* Custom blur effects */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Number badges animation */
+.group:hover .text-7xl {
+  transform: scale(1.1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* Gradient card hover effect */
+.hover\:shadow-2xl:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 640px) {
+  .why-me-section h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .why-me-section .grid {
+    gap: 1rem;
+  }
+  
+  .bg-gradient-to-r.from-\[\#1E2A38\] {
+    padding: 1.5rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .why-me-section h2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+.group, .hover\:shadow-2xl, .hover\:scale-110 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glassmorphism effect for badges */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+}
+
+/* Ensure text doesn't overflow on small screens */
+.text-sm, .text-base {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix for the animated underline on mobile */
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure all content respects sidebar margin */
+main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Card content spacing fixes */
+.group .p-5, .group .p-6 {
+  box-sizing: border-box;
+}
+
+/* Fix for the trust bar on medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bg-gradient-to-r.from-\[\#1E2A38\] .flex-col {
+    flex-direction: column;
+  }
+  
+  .bg-gradient-to-r.from-\[\#1E2A38\] .w-full.lg\:w-auto {
+    width: 100%;
+  }
+}
